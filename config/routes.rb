@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root to: 'sessions#new'
   resources :sessions, only: :index
   get "/auth/:provider/callback" => 'sessions#create'
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  get '/create' => 'sessions#create'
+  get '/event' => 'sessions#event'
+  post '/post_event' => 'sessions#post_event'
 end
