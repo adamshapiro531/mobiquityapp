@@ -26,11 +26,9 @@ class SessionsController < ApplicationController
 		        event = {
 	                'summary' => @event.summary,
 	                'location' => @event.location,
-	                'start' => {
-	                'dateTime' => Chronic.parse(@event.starttime)},  
-	               	'end' => {         
-	          		'dateTime' => Chronic.parse(@event.endtime)},   
-	          		'attendees' => session[:id]
+	                'start' => {'dateTime' => Chronic.parse(@event.starttime)},  
+	               	'end' => {'dateTime' => Chronic.parse(@event.endtime)},   
+	          		'attendees' => [{'email' => "#{session[:id]}"}]
 	            }
 			    client = Google::APIClient.new
 			    client.authorization.access_token = session[:token]
