@@ -1,9 +1,17 @@
-<%= form_for :post, url:  do |f| %>
+<%= form_for @event, :post, url: "/post_event" do |f| %>
 
-	<%= f.text_field :summary %>
-	<%= f.text_field :location %>
-	<%= f.text_field :starttime %>
-	<%= f.text_field :endtime %>
+	<h3>Summary:</h3>
+	<%= f.text_field :summary %><br>
+
+	<h3>Location:</h3>
+	<%= f.text_field :location %><br>
+
+	<h3>Start Time:</h3>
+	<%= f.text_field :starttime %><br>
+
+	<h3>End Time:</h3>
+	<%= f.text_field :endtime %><br>
+
   	<%= f.submit %>
 
 <% end %>
