@@ -13,13 +13,14 @@ class SessionsController < ApplicationController
 	end
 
 	def event
+		@event = Event.new
 	end
 
 	def show
 	end
 
 	def post_event
-	  	@event = Event.new(params[:event])
+	  	@event = Event.new(event_params)
 	    respond_to do |format|
 		    if @event.save
 		        event = {
@@ -46,6 +47,12 @@ class SessionsController < ApplicationController
 				format.json { render json: @event.errors, status: :unprocessable_entity }   
 			end  
 		end  
+	end
+
+	private
+
+	def event_params
+		params.require(:event).permit(:summary,:location,:starttime,:endtime)
 	end
 
 end
