@@ -32,7 +32,6 @@ class SessionsController < ApplicationController
 	          		'dateTime' => Chronic.parse(@event.endtime)},   
 	          		'attendees' => session[:id]
 	            }
-		        #Use the token from the data to request a list of calendars         token = user["token"]
 			    client = Google::APIClient.new
 			    client.authorization.access_token = session[:token]
 		        service = client.discovered_api('calendar', 'v3')
